@@ -76,15 +76,62 @@
         </div>
 </nav>
 <br>
+<div><button class="btn btn-danger" onclick="showform()"></button></div>
 <hr>
-<?php 
-use Illuminate\Support\Facades\DB;
+<div id="edit-form" >
+  <div class="container mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Ürün Resmi</th>
+                <th scope="col">Ürün Adı</th>
+                <th scope="col">Ürün marka</th>
+                <th scope="col">Ürün model</th>
+                <th scope="col">Ürün Fiyatı</th>
+                <th scope="col">kategori</th>
+                <th scope="col">satici</th>
+                <th scope="col">bilgi</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($veri as $urun) { ?>
+                <tr>
+                    <form action="<?php echo route('guncelle', $urun->id); ?>" method="GET">
+                      <input type="text" name="gorsel" value="<?php echo $urun->gorsel; ?>" style="display: none; width: 20px">
+                        <td><img src="uploads/<?php echo $urun->gorsel; ?>" class="card-img-top" alt="resim" style="max-width: 100px;"></td>
+                        <td><input type="text" name="urunadi" value="<?php echo $urun->urunadi; ?>" style="width: 50px"></td>
+                        <td><input type="text" name="marka" value="<?php echo $urun->marka; ?>" style="width: 50px"></td>
+                        <td><input type="text" name="model" value="<?php echo $urun->model; ?>"style="width: 50px"></td>
+                        <td><input type="text" name="fiyat" value="<?php echo $urun->fiyat; ?>"style="width: 50px"></td>
+                        <td><input type="text" name="kategori" value="<?php echo $urun->kategori; ?>"style="width: 50px"></td>
+                        <td><input type="text" name="satici" value="<?php echo $urun->satici; ?>"style="width: 50px"></td>
+                        <td><input type="text" name="bilgi" value="<?php echo $urun->bilgi; ?>"style="width: 50px"></td>                      
 
 
+                        <td>
+                            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                            <button type="submit" class="btn btn-info btn-danger">Güncelle</button>
+                        </td>
+                    </form>
+                    <td>
+                        <form action="<?php echo route('sil', $urun->id); ?>" method="GET">
+                        
+                            <button class="btn btn-info btn-danger" type="submit">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
+</div>
+<br>
+<br>
+<br>
 
-?>
 
-<div><h1>Ürün Ekle</h1></div>
 
          <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data">
@@ -137,109 +184,9 @@ use Illuminate\Support\Facades\DB;
           </div>
         </form>
      </div>
-<div id="profile_view">
-  <table class="table table-borderless-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Görsel</th>
-        <th scope="col">Ürün Adı</th>
-        <th scope="col">Marka</th>
-        <th scope="col">Model</th>
-        <th scope="col">Fiyat</th>
-        <th scope="col">Kategori</th>
-        <th scope="col">Satıcı</th>
-        <th scope="col">Bilgi</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    @foreach ($veri as $veris )
-      <tbody>
-      <tr>
-        <th scope="row">{{ $veris->id }}</th>
-        <td><img src="uploads/{{ $veris->gorsel }}" alt="" style="height: 50px; width: 50px;"></td>
-        <td>{{ $veris->urunadi }}</td>
-        <td>{{ $veris->marka }}</td>
-        <td>{{ $veris->model }}</td>
-        <td>{{ $veris->fiyat }}</td>
-        <td>{{ $veris->kategori }}</td>
-        <td>{{ $veris->satici }}</td>
-        <td>{{ $veris->bilgi }}</td>
-        <td><td><a href="{{url('urunlerim',$veris->id)}}"><button class="btn btn-danger">Sil</button></a> </td>
+
         
-        
-      </tr>
-    </tbody>
-    @endforeach
-    <td>
-      <button class="btn btn-warning" onclick="showForm({{$veris->id}})">Düzenle</button>
-    </td>
-  </table>
-</div>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-        </div>
-        <div id="edit-form" style="display:none;">
-          @foreach ($veri as $veris )
-          <form action="" method="POST">
-            @csrf
-            <div id="profile_view">
-              <table class="table table-borderless-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Görsel</th>
-                    <th scope="col">Ürün Adı</th>
-                    <th scope="col">Marka</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Fiyat</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Satıcı</th>
-                    <th scope="col">Bilgi</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                
-                  <tbody>
-                  <tr>
-                    <th scope="row">{{ $veris->id }}</th>
-                    <td><img name="uploads/{{ $veris->gorsel }}" src="uploads/{{ $veris->gorsel }}" alt="" style="height: 50px; width: 50px;"></td>
-                    <input type="text" name="gorsel" value="uploads/{{ $veris->gorsel }}" style="display:none;">
-
-                    <td><input type="text" name="urunadi" value="{{ $veris->urunadi }}"></td>
-                    <td><input type="text" name="marka" value="{{ $veris->marka }}"></td>
-                    <td><input type="text" name="model" value="{{ $veris->model }}"></td>
-                    <td><input type="text" name="fiyat" value="{{ $veris->fiyat }}"></td>
-                    <td><input type="text" name="kategori" value="{{ $veris->kategori }}"></td>
-                    <td><input type="text" name="satici" value="{{ $veris->satici }}"></td>
-                    <td><input type="text" name="bilgi" value="{{ $veris->bilgi }}"></td>
-                    <td><td><a href="{{url('urunlerim',$veris->id)}}"><button class="btn btn-danger">Sil</button></a> </td>
-                    
-                    
-                  </tr>
-                  <tr>
-                    <td>
-                      <button class="btn btn-warning" type="submit">Kaydet</button>
-                    </td>
-                  </tr>
-                </tbody>
-           
-          </form>
-          @endforeach
-        </div>
-        <br>
-        <br>
-        <br>
+       
         <script>
           function showForm() {
             var profileView = document.getElementById("profile_view");

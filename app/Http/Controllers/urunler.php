@@ -38,19 +38,24 @@ class urunler extends Controller
        
      }
 
-     public function duzenle(Request $req, $id)
+     public function guncelle(Request $req, $id)
     {
-        $urun = urunlers::find($id);
-        $urun->gorsel = $req->input('gorsel');
-        $urun->urunadi = $req->input('urunadi');
-        $urun->marka = $req->input('marka');
-        $urun->model = $req->input('model');
-        $urun->fiyat = $req->input('fiyat');
-        $urun->kategori = $req->input('kategori');
-        $urun->satici = $req->input('satici');
-        $urun->bilgi = $req->input('bilgi');
-        $urun->save();
-        return redirect('/satici');
+        
+            DB::table('urunlers')
+                ->where('id', $id)
+                ->update([
+                    'gorsel' => $req->input('gorsel'),
+                    'urunadi' => $req->input('urunadi'),
+                    'marka' => $req->input('marka'),
+                    'model' => $req->input('model'),
+                    'fiyat' => $req->input('fiyat'),
+                    'kategori' => $req->input('kategori'),
+                    'satici' => $req->input('satici'),
+                    'bilgi' => $req->input('bilgi')
+                ]);
+            return back(); // Ürünler sayfasına geri dön
+        
+        
     }
 
 
