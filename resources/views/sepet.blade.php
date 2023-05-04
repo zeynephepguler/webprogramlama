@@ -53,7 +53,7 @@
                       <td>₺{{ $urun_detay->fiyat * $urun->toplam_adet }}</td>
                       <td>
                         <button class="btn btn-danger btn-sm">
-                          <i class="fa fa-trash"></i>
+                          <i class="fa fa-trash">Sil</i>
                         </button>
                       </td>
                     </tr>
