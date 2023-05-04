@@ -29,7 +29,7 @@ $siparisler = DB::table('siparislers')
                     @elseif ($siparis->durum == "Kargo İptal Edildi")
                     <p class="card-text">Durum: <span class="badge bg-danger">{{ $siparis->durum }}</span></p>
                     @elseif ($siparis->durum == "Kargo Yola Çıktı")
-                    <p class="card-text">Durum: <span class="badge bg-light">{{ $siparis->durum }}</span></p>
+                    <p class="card-text">Durum: <span class="badge bg-dark">{{ $siparis->durum }}</span></p>
                     @endif
                 </div>
             </div>

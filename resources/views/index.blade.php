@@ -46,8 +46,8 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
                </div>
             @endif
                         @csrf
-              <input name="adi" style="width: 130px; position: absolute; top: 2px; right: 350px;" type="text" class="form-control" placeholder="Kullanıcı Adı" aria-label="Username" aria-describedby="basic-addon1">
-              <input name="sifre" style="width: 130px; position: absolute; top: 2px; right: 210px;" type="text" class="form-control" placeholder="Şifre" aria-label="Username" aria-describedby="basic-addon1">
+              <input name="adi" style="width: 130px; position: absolute; top: 2px; right: 350px;" type="text" class="form-control" placeholder="E-Posta" aria-label="Username" aria-describedby="basic-addon1">
+              <input name="sifre" style="width: 130px; position: absolute; top: 2px; right: 210px;" type="password" class="form-control" placeholder="Şifre" aria-label="Username" aria-describedby="basic-addon1">
               <button style=" position: absolute; top: 2px; right: 120px;" type="submit" class="btn btn-success">Giriş Yap</button>
              
             </form> 

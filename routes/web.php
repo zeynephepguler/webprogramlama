@@ -69,7 +69,7 @@ Route::get('sepet',[App\Http\Controllers\sepet_controller::class,'sepetim']);
 Route::get('urunlerim', [App\Http\Controllers\Urunler::class,'urunler'])->name('urunler');
 Route::get('/urunlerim/{id}', [App\Http\Controllers\Urunler::class,'sil'])->name('sil');
 Route::get('/home-urunlerim/{id}', [App\Http\Controllers\Urunler::class,'guncelle'])->name('guncelle');
-
+Route::get('home-sepet/{id}',[App\Http\Controllers\sepet_controller::class,'sil'])->name('silS');
 
 Route::post('sepet', [App\Http\Controllers\SiparisController::class, 'post'])->name('siparisPost');
 //Route::post('urunlerim', [App\Http\Controllers\urunler::class, 'duzenle'])->name('duzenle');{{ route('duzenle', ['id' => $veris->id]) }}

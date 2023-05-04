@@ -88,145 +88,30 @@
 
 <div>
   <br><br>
-  <table class="table">
-    <tbody>
-     
-      <tr>
-        <th scope="row">
-          <div class="col" style="float: left;width: %40; height:%100;" >
-            <br>
-            <br>
-            <br>
-            
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Yemek Takımı</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Çatal Bıçak Seti</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Baharat Takımı</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Fırın&Kek kalıbı</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Çaydanlık</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Tencere Seti</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Elektronik</a>
-              </li>
-            </ul>
-            </div>
-        </th>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="cay.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="cay2.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="kahve.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-      </tr>
-
+  
+        <div class="row" id="product-dom p-5" style="margin: 20px;">  
         @foreach ($veri as $veris )
-        <tr>
-        <td></td>
-        <td name="veri[]"><div class="card" style="width: 18rem;">
-          <img src="/uploads/{{ $veris->gorsel }}" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">{{ $veris->urunadi }}</h5>
-            <p class="card-text">{{ $veris->model }}</p>           
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>{{ $veris->fiyat }}</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="{{url('incele',$veris->id)}}" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div></td>       
-          <td name="veri[]"><div class="card" style="width: 18rem;">
-            <img src="/uploads/{{ $veris->gorsel }}" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-            <div class="card-body">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100 small-card ">
+              <img src="uploads/{{ $veris->gorsel }}" class="card-img-top " alt="resim">
+              <div class="card-body">
               <h5 class="card-title">{{ $veris->urunadi }}</h5>
-              <p class="card-text">{{ $veris->model }}</p>           
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" style="color: red;">%30 indirim</li>
-              <li class="list-group-item"><del>{{ $veris->fiyat }}</del></li>
-              <li class="list-group-item">70</li>
-            </ul>
-            <div class="card-body">
-              <a href="{{url('incele',$veris->id)}}" class="card-link">İncele</a>
-              <a href="#" class="card-link">Sepete Ekle</a>
-            </div></td>     
-            <td name="veri[]"><div class="card" style="width: 18rem;">
-              <img src="/uploads/{{ $veris->gorsel }}" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-              <div class="card-body">
-                <h5 class="card-title">{{ $veris->urunadi }}</h5>
-                <p class="card-text">{{ $veris->model }}</p>           
+              <p class="card-text">{{ $veris->marka }}</p> 
+              <div class="d-flex justify-content-between">
+               <span class="price badge rounded-pill bg-warning text-dark d-flex align-items-center">{{ $veris->fiyat}} ₺</span>
               </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="color: red;">%30 indirim</li>
-                <li class="list-group-item"><del>{{ $veris->fiyat }}</del></li>
-                <li class="list-group-item">70</li>
-              </ul>
+
               <div class="card-body">
-                <a href="{{url('incele',$veris->id)}}" class="card-link">İncele</a>
-                <a href="#" class="card-link">Sepete Ekle</a>
-              </div></td>     
-            </tr>   
+                <a href="{{url('incele',$veris->id)}}" class="btn btn-info">İncele</a>
+                <a href="{{url('sepet',$veris->id)}}" class="btn btn-info btn-danger">Sepete Ekle</a>
+              </div></td> 
+              </div>
+          </div>
+          </div>
+           
+            
       @endforeach
-        
+     </div>   
       </tr>
    
     </tbody>

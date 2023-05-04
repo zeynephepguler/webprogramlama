@@ -121,7 +121,6 @@
               session()->put('Urun',$bilg->id);
                ?>
               <tr><td><button  type="button" class="btn btn-warning"><a href="{{url('sepet',$bilg->id)}}" style=" text-decoration:none ;color: white;"><h3>Sepete Ekle</h3></a></button>
-                <td>  <button  type="button" class="btn btn-danger"><a href="#" style=" text-decoration:none ;color: white;"><h3>Favoriye Ekle</h3></a></button>
                 </td>
               </tr>
             </tbody>

@@ -41,7 +41,7 @@
                 <tbody>
                   @if(count($urunler) > 0)
                   @foreach ($urunler as $urun )
-                
+               
                     <?php                                      
                     $urun_detay = DB::table('urunlers')->where('id', '=', $urun->urun_id)->first();
                      ?>
@@ -52,9 +52,9 @@
                       <td>{{ $urun->toplam_adet }}</td>
                       <td>₺{{ $urun_detay->fiyat * $urun->toplam_adet }}</td>
                       <td>
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fa fa-trash">Sil</i>
-                        </button>
+                        <form action=" {{ route('silS', $urun->urun_id) }}" method="GET">
+                          <button class="btn btn-danger btn-block btn-sm" type="submit">Sil</button>
+                      </form>
                       </td>
                     </tr>
                   @endforeach

@@ -22,7 +22,7 @@ class Users extends Controller
       $user->Email=$req->email;
        
       $user->save();
-      return view('anasayfa');
+      return view('i');
        
      }
 
@@ -34,7 +34,7 @@ class Users extends Controller
 
         ]);
 
-        $userInfo = kullanici::where('kullaniciAdi','=', $request->adi)->first();
+        $userInfo = kullanici::where('email','=', $request->adi)->first();
 
         if(!$userInfo){
             return back()->with('fail','E postaya kayıtlı kullanıcı yok');

@@ -25,12 +25,15 @@ class sepet_controller extends Controller
         }
         
         
-        return view('sepet', ['urunler' => $urunler],['kullanici'=>$kullanici]);
+        return view('sepet', ['urunler' => $urunler],['kullanici'=>$kullanici],['id',$urunIds]);
     }
 
-    public function aktar()
-    {        
+    public function sil($id)
+    {
 
-        return view('sepetim');
+        $data=DB::table('sepets')->where('urun_id','=',$id)->delete();
+
+        return back()->with('Ürün Silindi');
     }
+
 }

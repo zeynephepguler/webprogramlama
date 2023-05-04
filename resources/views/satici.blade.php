@@ -20,11 +20,11 @@
     <div class="container" style="background-color: rgb(235, 233, 233);width: %100;">
       <div class="row" style="background-color: rgb(235, 233, 233); width: %100;">
         <div class="col" style=" position: absolute;  top: 10px;">
-        İndirimli ürünleri incelemek için <a href="http://">tıklayın</a>
+       
         </div>
         <div class="col">
           <ul>
-            <a href="" style="text-decoration: none; color:rgb(71, 56, 2); vertical-align: middle; position: absolute; top: 10px; right: 650px;" >Anasayfa</a>
+            <a href="/satici" style="text-decoration: none; color:rgb(71, 56, 2); vertical-align: middle; position: absolute; top: 10px; right: 650px;" >Anasayfa</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="" style="text-decoration: none; color:rgb(71, 56, 2); vertical-align: middle; position: absolute; top: 10px; right: 550px;">Kayıt ol</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -57,7 +57,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto ">
         <li class="nav-item">
-          <a id="main" class="nav-link active" aria-current="page" href="/urunlerim"> Ürünlerim</a>
+          <a id="main" class="nav-link active" aria-current="page" href="/urunlerim"> Ürün Ekle&Düzenle</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/siparisler" >Siparişler</a>
@@ -83,171 +83,33 @@
 
 <div>
   <br><br>
-  <table class="table">
-    <tbody>
-     
-      <tr>
-        <th scope="row">
-          <div class="col" style="float: left;width: %40; height:%100;" >
-            <br>
-            <br>
-            <br>
-            
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Yemek Takımı</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Çatal Bıçak Seti</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Baharat Takımı</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Fırın&Kek kalıbı</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Çaydanlık</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Tencere Seti</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Elektronik</a>
-              </li>
-            </ul>
-            </div>
-        </th>
-       
-       
+  
+       <style>
+        .small-card {
+  max-width: 250px;
+  margin: 0 auto;
+ 
+
+  
+}
+
+
+       </style>
+        <div class="row" id="product-dom p-5" style="margin: 20px;">  
       @foreach ($veri as $veris )
-        <td></td>
-        <td name="veri[]"><div class="card" style="width: 18rem;">
-          <img src="/uploads/{{ $veris->gorsel }}" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 small-card ">
+            <img src="uploads/{{ $veris->gorsel }}" class="card-img-top " alt="resim">
+            <div class="card-body">
             <h5 class="card-title">{{ $veris->urunadi }}</h5>
-            <p class="card-text">{{ $veris->model }}</p>           
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>{{ $veris->fiyat }}</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="{{url('incele',$veris->id)}}" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div></td>       
-                      
+            <div class="d-flex justify-content-between">
+             <span class="price badge rounded-pill bg-warning text-dark d-flex align-items-center">{{ $veris->fiyat}} ₺</span>
+            </div>
+            </div>
+        </div>
+        </div>
       @endforeach
-    </tr>
-      <tr>
-        <th scope="row"></th>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="cay.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="cay2.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="kahve.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-      </tr>
-      <tr>
-        <th scope="row"></th>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="kek.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="kek2.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-        <td> <div class="card" style="width: 18rem;">
-          <img src="tabak3.jpg" class="card-img-top" alt="..." style="width: 262 px; height:262 px;">
-          <div class="card-body">
-            <h5 class="card-title">Kütahya Porselen</h5>
-            <p class="card-text">En iyilrinin En iyisi.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="color: red;">%30 indirim</li>
-            <li class="list-group-item"><del>100</del></li>
-            <li class="list-group-item">70</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">İncele</a>
-            <a href="#" class="card-link">Sepete Ekle</a>
-          </div>
-          
-        </div></td>
-      </tr>
+    </div>
    
     </tbody>
   </table>
