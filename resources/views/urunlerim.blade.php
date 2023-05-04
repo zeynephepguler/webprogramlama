@@ -76,21 +76,31 @@
         </div>
 </nav>
 <br>
-<div><button class="btn btn-danger" onclick="showform()"></button></div>
+<div class="container md-3"><button class="btn btn-danger col-md-middle" onclick="showForm()">Ürün Ekle</button></div>
 <hr>
-<div id="edit-form" >
-  <div class="container mt-3">
-    <table class="table">
+<div id="profile_view">
+  <div class="container md-3">
+    <style>
+        th, td {
+            text-align: center;
+        }
+        
+        .btn {
+            font-size: 1.2em;
+            padding: 10px 20px;
+        }
+    </style>
+    <table class="table table-striped" >
         <thead>
             <tr>
                 <th scope="col">Ürün Resmi</th>
                 <th scope="col">Ürün Adı</th>
-                <th scope="col">Ürün marka</th>
-                <th scope="col">Ürün model</th>
+                <th scope="col">Ürün Marka</th>
+                <th scope="col">Ürün Model</th>
                 <th scope="col">Ürün Fiyatı</th>
-                <th scope="col">kategori</th>
-                <th scope="col">satici</th>
-                <th scope="col">bilgi</th>
+                <th scope="col">Kategori</th>
+                <th scope="col">Satıcı</th>
+                <th scope="col">Bilgi</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -99,26 +109,23 @@
             <?php foreach($veri as $urun) { ?>
                 <tr>
                     <form action="<?php echo route('guncelle', $urun->id); ?>" method="GET">
-                      <input type="text" name="gorsel" value="<?php echo $urun->gorsel; ?>" style="display: none; width: 20px">
+                        <input type="text" name="gorsel" value="<?php echo $urun->gorsel; ?>" style="display: none; width: 20px">
                         <td><img src="uploads/<?php echo $urun->gorsel; ?>" class="card-img-top" alt="resim" style="max-width: 100px;"></td>
-                        <td><input type="text" name="urunadi" value="<?php echo $urun->urunadi; ?>" style="width: 50px"></td>
-                        <td><input type="text" name="marka" value="<?php echo $urun->marka; ?>" style="width: 50px"></td>
-                        <td><input type="text" name="model" value="<?php echo $urun->model; ?>"style="width: 50px"></td>
-                        <td><input type="text" name="fiyat" value="<?php echo $urun->fiyat; ?>"style="width: 50px"></td>
-                        <td><input type="text" name="kategori" value="<?php echo $urun->kategori; ?>"style="width: 50px"></td>
-                        <td><input type="text" name="satici" value="<?php echo $urun->satici; ?>"style="width: 50px"></td>
-                        <td><input type="text" name="bilgi" value="<?php echo $urun->bilgi; ?>"style="width: 50px"></td>                      
-
-
+                        <td><input type="text" name="urunadi" value="<?php echo $urun->urunadi; ?>" class="form-control"></td>
+                        <td><input type="text" name="marka" value="<?php echo $urun->marka; ?>" class="form-control"></td>
+                        <td><input type="text" name="model" value="<?php echo $urun->model; ?>" class="form-control"></td>
+                        <td><input type="text" name="fiyat" value="<?php echo $urun->fiyat; ?>" class="form-control"></td>
+                        <td><input type="text" name="kategori" value="<?php echo $urun->kategori; ?>" class="form-control"></td>
+                        <td><input type="text" name="satici" value="<?php echo $urun->satici; ?>" class="form-control"></td>
+                        <td><input type="text" name="bilgi" value="<?php echo $urun->bilgi; ?>" class="form-control"></td>
                         <td>
                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-                            <button type="submit" class="btn btn-info btn-danger">Güncelle</button>
+                            <button type="submit" class="btn btn-info btn-block btn-sm">Güncelle</button>
                         </td>
                     </form>
                     <td>
                         <form action="<?php echo route('sil', $urun->id); ?>" method="GET">
-                        
-                            <button class="btn btn-info btn-danger" type="submit">Sil</button>
+                            <button class="btn btn-danger btn-block btn-sm" type="submit">Sil</button>
                         </form>
                     </td>
                 </tr>
@@ -126,79 +133,83 @@
         </tbody>
     </table>
 </div>
+
 </div>
 <br>
 <br>
 <br>
 
 
+<div id="edit_form" style="display: none;" class="container md-3" >
+  <div class="card">
+    <div class="card-header">
+      Ürün Ekle
+    </div>
+    <div class="card-body">
+      <form action="" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+          <label for="urunadi">Ürün Adı</label>
+          <input type="text" name="urunadi" id="urunadi" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="marka">Marka</label>
+          <input type="text" name="marka" id="marka" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="model">Model</label>
+          <input type="text" name="model" id="model" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="fiyat">Fiyat</label>
+          <input type="text" name="fiyat" id="fiyat" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="satici">Satıcı</label>
+          <input type="text" name="satici" id="satici" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="kategori">Kategori</label>
+          <select name="kategori" id="kategori" class="form-control" required>
+            <option value="">Seçim Yapınız</option>
+            <option value="Yemek Takımı">Yemek Takımı</option>
+            <option value="Çatal Bıçak Seti">Çatal Bıçak Seti</option>
+            <option value="Baharat Takımı">Baharat Takımı</option>
+            <option value="Fırın&Kek Kalıbı">Fırın&Kek Kalıbı</option>
+            <option value="Çaydanlık">Çaydanlık</option>
+            <option value="Tencere Seti">Tencere Seti</option>
+            <option value="Elektronik">Elektronik</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gorsel">Ürün Fotoğrafı</label>
+          <input type="file" name="gorsel" id="gorsel" class="form-control-file" required>
+        </div>
+        <div class="form-group">
+          <label for="bilgi">Ürün Bilgisi</label>
+          <textarea name="bilgi" id="bilgi" class="form-control" cols="30" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Ürün Ekle</button>
+      </form>
+    </div>
+  </div>
+  
 
-         <div class="card-body">
-            <form action="" method="post" enctype="multipart/form-data">
-                @csrf
-            <div class="form-group">
-                <label for="">Ürün Adı</label>
-                <input type="text" name="urunadi" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Marka</label>
-                <input type="text" name="marka" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Model</label>
-                <input type="text" name="model" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Fiyat</label>
-                <input type="text" name="fiyat" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Satıcı</label>
-                <input type="text" name="satici" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Kategori</label>
-                <select name="kategori" id="" class="form-control" required>
-                    <option value="">Seçim Yapınız</option>
-                    <option value="Yemek Takımı">Yemek Takımı</option>
-                    <option value="Çatal Bıçak Seti">Çatal Bıçak Seti</option>
-                    <option value="Baharat Takımı">Baharat Takımı</option>
-                    <option value="Fırın&Kek Kalıbı">Fırın&Kek Kalıbı</option>
-                    <option value="Çaydanlık">Çaydanlık</option>
-                    <option value="Tencere Seti">Tencere Seti</option>
-                    <option value="Elektronik">Elektronik</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Ürün Fotoğrafı</label>
-                <input type="file" name="gorsel" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Ürün Bilgisi</label>
-                <br>
-                <textarea name="bilgi" id="" cols="30" rows="4"></textarea>            </div>
-         </div>
-         <div class="form-group">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary btn-block">Ürün Ekle</button>          
-          </div>
-        </form>
-     </div>
-
-        
+    </div>        
        
-        <script>
-          function showForm() {
-            var profileView = document.getElementById("profile_view");
-            var editForm = document.getElementById("edit-form");
-        
-            if (editForm.style.display === "none") {
-              profileView.style.display = "none";
-              editForm.style.display = "block";
-            } else {
-              profileView.style.display = "block";
-              editForm.style.display = "none";
-            }
-          }
-        </script>
+<script>
+  function showForm() {
+   
+  var profileView = document.getElementById("profile_view");
+  var editForm = document.getElementById("edit_form");
+
+    if (editForm.style.display === "block") {
+      profileView.style.display = "block";
+      editForm.style.display = "none";
+    } else {
+      profileView.style.display = "none";
+      editForm.style.display = "block";
+    }
+  }
+</script>
         
