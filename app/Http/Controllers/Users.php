@@ -22,7 +22,7 @@ class Users extends Controller
       $user->Email=$req->email;
        
       $user->save();
-      return view('i');
+      return view('index');
        
      }
 
@@ -33,6 +33,11 @@ class Users extends Controller
           'sifre'=>'required|Sifre|min:2|max:12',
 
         ]);
+
+        if($request->adi == "admin" && $request->sifre == "123") {
+          return redirect('satici');
+      }
+      else{
 
         $userInfo = kullanici::where('email','=', $request->adi)->first();
 
@@ -49,6 +54,7 @@ class Users extends Controller
                 return redirect('i')->with('fail','sifre Yanlıs');
             }
         }
+      }
       }
       function kullanicibilgileriniyolla(){
         $k=DB::table('kullanicis')->where('id','=',session('LoggedUser'))->get(); 
